@@ -84,21 +84,21 @@ if reckon_file and sales_file:
             aliases = {
                 "la petite maison": "lpm",
                 "ji ja": "jija 吱喳小館",
-                "Crowne Plaza Hong Kong": "Crowne Plaza",
-                "Bourke's": "Bourkeâ€™s (ex Shady Acres)",
-                "Dalloyau Bistro(Tsuen Wan)": "Dalloyau Division  (Food Lab)",
-                "Foreign Corresp. Club å¤–åœ‹è¨˜è€…æœƒ": "Foreign Correspondents' Club Hong Kong",
-                "Chuang, Karen": "Chuang, Karen  èŽŠå¤ª- (Nina Chung)",
+                "crowne plaza hong kong": "crowne plaza",
+                "bourke's": "bourkeâ€™s (ex shady acres)",
+                "dalloyau bistro(tsuen wan)": "dalloyau division  (food lab)",
+                "foreign corresp. club å¤–åœ‹è¨˜è€…æœƒ": "foreign correspondents' club hong kong",
+                "chuang, karen": "chuang, karen  èžšå¤ª- (nina chung)",
                 "jep by involtini": "half by involtini - tuen mun",
-                "Anna Hui": "Hui, Anna",
-                "Yu, Tim (Arcane)": "Tim Yu - Arcane",
-                "Que": "Que - Pok Fu Lam",
-                "Park Lane Hong KongæŸå¯§é…’åº—": "Park Lane Hotel",
-                "Ng, Nikki": "Ng Mien Hua (Ng Nikki)",
-                "Milo (Eric Kayser)": "Milo - Eric Kayser Artisan Boulanger",
-                "Justin (Te Bo)": "Justin - Tong Chong Kitchen - Te Bo 2/F",
-                "Harbour Grand Hong Kong": "Harbour Grand Hong Kong (North Point)",
-                "Grazizno chef": "Graziano De Gregorio - Estro"
+                "anna hui": "hui, anna",
+                "yu, tim (arcane)": "tim yu - arcane",
+                "que": "que - pok fu lam",
+                "park lane hong kongæŸ å¯§é…’åº—": "park lane hotel",
+                "ng, nikki": "ng mien hua (ng nikki)",
+                "milo (eric kayser)": "milo - eric kayser artisan boulanger",
+                "justin (te bo)": "justin - tong chong kitchen - te bo 2/f",
+                "harbour grand hong kong": "harbour grand hong kong (north point)",
+                "grazizno chef": "graziano de gregorio - estro"
             }
 
             for r_name, r_amount in reckon_totals.items():
