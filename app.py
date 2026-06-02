@@ -72,19 +72,48 @@ if reckon_file and sales_file:
                 st.error("Error: Could not find 'Customer Name' or 'Amount' columns in the Sales Report.")
                 st.stop()
 
-            # --- 3. MATCH AND COMPARE ---
+# --- 3. MATCH AND COMPARE ---
             results = []
-            sales_keys = list(sales_totals.keys())
+            
+            # Create a lowercase map for case-insensitive matching
+            sales_keys_lower = {str(k).lower(): k for k in sales_totals.keys()}
             used_sales_keys = set()
+            
+            # --- CUSTOM ALIAS DICTIONARY ---
+            # You can add known abbreviations here! (Format: "reckon name": "sales name")
+            aliases = {
+                "la petite maison": "lpm"
+            }
 
             for r_name, r_amount in reckon_totals.items():
-                # Check for an exact match first
-                if r_name in sales_totals:
-                    s_name = r_name
-                else:
-                    # If no exact match, use AI fuzzy matching to find the closest spelling
-                    match = difflib.get_close_matches(r_name, sales_keys, n=1, cutoff=0.3)
-                    s_name = match[0] if match else "No Match Found"
+                s_name = None
+                r_name_lower = str(r_name).lower()
+                
+                # Check 1: Custom Alias Dictionary
+                if r_name_lower in aliases:
+                    target_lower = aliases[r_name_lower]
+                    if target_lower in sales_keys_lower:
+                        s_name = sales_keys_lower[target_lower]
+
+                # Check 2: Exact Case-Insensitive Match
+                if not s_name and r_name_lower in sales_keys_lower:
+                    s_name = sales_keys_lower[r_name_lower]
+                
+                # Check 3: Fuzzy Match (Strictness raised to 65%)
+                if not s_name:
+                    match = difflib.get_close_matches(r_name_lower, list(sales_keys_lower.keys()), n=1, cutoff=0.65)
+                    if match:
+                        s_name = sales_keys_lower[match[0]]
+                        
+                # Check 4: Substring Match (e.g. "AMI" matches "AMI - Central")
+                if not s_name:
+                    for s_key in sales_keys_lower.keys():
+                        if len(r_name_lower) > 2 and (r_name_lower in s_key or s_key in r_name_lower):
+                            s_name = sales_keys_lower[s_key]
+                            break
+                            
+                if not s_name:
+                    s_name = "No Match Found"
 
                 if s_name != "No Match Found":
                     used_sales_keys.add(s_name)
