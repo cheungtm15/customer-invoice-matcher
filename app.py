@@ -68,7 +68,7 @@ if amount_col and name_col:
                 # Group by customer and add up their totals
                 sales_totals_series = sales_df.groupby(name_col[0])[amount_col[0]].sum()
                 sales_totals = sales_totals_series.to_dict()
-            else:
+else:
                 st.error("Error: Could not find 'Customer Name' or 'Amount' columns in the Sales Report.")
                 st.stop()
 
