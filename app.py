@@ -60,9 +60,11 @@ if reckon_file and sales_file:
             amount_col = [c for c in sales_df.columns if 'Amount' in c]
             name_col = [c for c in sales_df.columns if 'Customer Name' in c]
             
-            if amount_col and name_col:
-                # Force the amount column to be numbers, turning errors into 0
-                sales_df[amount_col[0]] = pd.to_numeric(sales_df[amount_col[0]], errors='coerce').fillna(0)
+if amount_col and name_col:
+                # Clean the data: turn to text, erase commas, then convert to numbers safely
+                cleaned_amounts = sales_df[amount_col[0]].astype(str).str.replace(',', '', regex=False)
+                sales_df[amount_col[0]] = pd.to_numeric(cleaned_amounts, errors='coerce').fillna(0.0)
+                
                 # Group by customer and add up their totals
                 sales_totals_series = sales_df.groupby(name_col[0])[amount_col[0]].sum()
                 sales_totals = sales_totals_series.to_dict()
