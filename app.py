@@ -82,7 +82,7 @@ if reckon_file and sales_file:
             # --- CUSTOM ALIAS DICTIONARY ---
             # You can add known abbreviations here! (Format: "reckon name": "sales name")
             aliases = {
-                "la petite maison": "lpm"
+                "la petite maison": "lpm",
                 "ji ja": "jija 吱喳小館"
             }
 
