@@ -83,7 +83,22 @@ if reckon_file and sales_file:
             # You can add known abbreviations here! (Format: "reckon name": "sales name")
             aliases = {
                 "la petite maison": "lpm",
-                "ji ja": "jija 吱喳小館"
+                "ji ja": "jija 吱喳小館",
+                "Crowne Plaza Hong Kong": "Crowne Plaza",
+                "Bourke's": "Bourkeâ€™s (ex Shady Acres)",
+                "Dalloyau Bistro(Tsuen Wan)": "Dalloyau Division  (Food Lab)",
+                "Foreign Corresp. Club å¤–åœ‹è¨˜è€…æœƒ": "Foreign Correspondents' Club Hong Kong",
+                "Chuang, Karen": "Chuang, Karen  èŽŠå¤ª- (Nina Chung)",
+                "jep by involtini": "half by involtini - tuen mun",
+                "Anna Hui": "Hui, Anna",
+                "Yu, Tim (Arcane)": "Tim Yu - Arcane",
+                "Que": "Que - Pok Fu Lam",
+                "Park Lane Hong KongæŸå¯§é…’åº—": "Park Lane Hotel",
+                "Ng, Nikki": "Ng Mien Hua (Ng Nikki)",
+                "Milo (Eric Kayser)": "Milo - Eric Kayser Artisan Boulanger",
+                "Justin (Te Bo)": "Justin - Tong Chong Kitchen - Te Bo 2/F",
+                "Harbour Grand Hong Kong": "Harbour Grand Hong Kong (North Point)",
+                "Grazizno chef": "Graziano De Gregorio - Estro"
             }
 
             for r_name, r_amount in reckon_totals.items():
