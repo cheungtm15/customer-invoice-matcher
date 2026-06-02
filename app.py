@@ -83,6 +83,7 @@ if reckon_file and sales_file:
             # You can add known abbreviations here! (Format: "reckon name": "sales name")
             aliases = {
                 "la petite maison": "lpm"
+                "ji ja": "jija 吱喳小館"
             }
 
             for r_name, r_amount in reckon_totals.items():
