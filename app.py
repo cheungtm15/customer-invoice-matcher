@@ -20,10 +20,23 @@ if reckon_file and sales_file:
     if st.button("Run Comparison", type="primary"):
         with st.spinner("Crunching the numbers..."):
             
-            # --- 1. EXTRACT DATA FROM DAILY RECKON ---
+# --- 1. EXTRACT DATA FROM DAILY RECKON ---
             reckon_totals = {}
-            # Read the CSV line by line
-            content = reckon_file.getvalue().decode('utf-8').splitlines()
+            
+            # Smart text decoding to handle Excel files and Chinese characters
+            raw_bytes = reckon_file.getvalue()
+            try:
+                content = raw_bytes.decode('utf-8').splitlines()
+            except UnicodeDecodeError:
+                try:
+                    content = raw_bytes.decode('utf-8-sig').splitlines() # Common in Excel exports
+                except UnicodeDecodeError:
+                    try:
+                        content = raw_bytes.decode('big5').splitlines() # Common in Hong Kong systems
+                    except UnicodeDecodeError:
+                        # Fallback that ignores completely unreadable characters without crashing
+                        content = raw_bytes.decode('utf-8', errors='ignore').splitlines()
+            
             reader = csv.reader(content)
             
             for row in reader:
